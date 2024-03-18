@@ -33,10 +33,21 @@ class BaseModel():
         Automatically called each time we instantiate BaseModel.
 
         """
+        formatt = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
+        # if kwargs is not empty
+        if len(kwargs) != 0:
+            new_dict = {k: v for k, v in kwargs.items() if k != "__class__"}
+
+            for k, v in new_dict.items():
+                if k == "created_at" or k == "updated_at":
+                    v = datetime.strptime(v, formatt)
+                    self.__dict__[k] = v
+                else:
+                    self.__dict__[k] = v
     def __str__(self):
         """
         Returns an informal string representation of an object.
@@ -48,13 +59,13 @@ class BaseModel():
 
     def save(self):
         """
-        Updates the public instance attribute updated_at with the current datetime.
+        Updates the instance attribute updated_at with the current datetime.
         """
         self.updated_at = datetime.now()
 
     def to_dict(self):
         """
-        Returns a dictionary containing all keys/values of __dict__ of the instance
+        Returns a dictionary containing all keys/values of __dict__
         """
         # make a copy of self.__dict__
         dict_copy = self.__dict__.copy()
