@@ -7,6 +7,7 @@ It supplies one class: BaseModel
 
 from uuid import uuid4
 from datetime import datetime
+import models
 
 
 class BaseModel():
@@ -48,6 +49,8 @@ class BaseModel():
                     self.__dict__[k] = v
                 else:
                     self.__dict__[k] = v
+        else:
+            models.storage.new(self)
     def __str__(self):
         """
         Returns an informal string representation of an object.
@@ -62,6 +65,7 @@ class BaseModel():
         Updates the instance attribute updated_at with the current datetime.
         """
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
