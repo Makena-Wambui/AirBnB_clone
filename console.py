@@ -30,7 +30,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb)"
-    __classes = ["BaseModel"]
+    __classes = ["BaseModel", "User"]
 
     def emptyline(self):
         """

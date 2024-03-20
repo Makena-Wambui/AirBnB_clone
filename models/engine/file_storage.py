@@ -5,6 +5,7 @@ This is the file_storage module.
 It supplies one class: FileStorage
 """
 
+from models.user import User
 from models.base_model import BaseModel
 import json
 
