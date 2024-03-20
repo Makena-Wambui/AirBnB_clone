@@ -159,7 +159,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, line):
         """
-        Updates an instance based on the class name and id by adding or updating attribute.
+        Updates an instance based on the class name and id
+        by adding or updating attribute.
         Changes then saved into the JSON file.
         Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com".
         """
@@ -176,7 +177,7 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 1:
             print("** instance id missing **")
             return False
-        
+
         my_dict = storage.all()
         if f"{line[0]}.{line[1]}" not in my_dict:
             print("** no instance found **")
@@ -192,19 +193,20 @@ class HBNBCommand(cmd.Cmd):
 
         # Retrieve the object based on class name and id
         o = my_dict[f"{line[0]}.{line[1]}"]
-            
+
         # check if that attribute name already exists
         if line[2] in o.__dict__.keys():
             # get value of this attribute and its type
             value = o.__dict__[line[2]]
             my_type = type(value)
-                
+
             # typecast and set
             setattr(o, line[2], my_type(line[3]))
             storage.save()
         else:
             setattr(o, line[2], line[3])
             storage.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
