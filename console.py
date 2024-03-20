@@ -10,9 +10,15 @@ for building command line interpreters.
 """
 
 import cmd
+import shlex
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
@@ -20,6 +26,8 @@ class HBNBCommand(cmd.Cmd):
     Class: HBNBCommand
 
     A sub class of class Cmd from the cmd module.
+
+    All definitions for commands used in my console.
 
     Attrributes:
         prompt => (hbnb)
@@ -30,8 +38,12 @@ class HBNBCommand(cmd.Cmd):
         empty_line
     """
 
-    prompt = "(hbnb)"
-    __classes = ["BaseModel", "User"]
+    prompt = "(hbnb) "
+    __classes = [
+            "BaseModel", "User", "Place",
+            "State", "City", "Amenity",
+            "Review"
+            ]
 
     def emptyline(self):
         """
@@ -61,7 +73,7 @@ class HBNBCommand(cmd.Cmd):
         saves it (to the JSON file) and prints the id.
         """
         # lets parse the line with split()
-        line = line.split()
+        line = shlex.split(line)
         if len(line) == 0:
             print("** class name missing **")
         elif line[0] not in HBNBCommand.__classes:
@@ -78,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
         Should work like this: all <class_name> or all
         """
         # parse the command line
-        line = line.split()
+        line = shlex.split(line)
 
         if len(line) > 0 and line[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
@@ -109,7 +121,7 @@ class HBNBCommand(cmd.Cmd):
         on the class name and id.
         """
         # parse line
-        line = line.split()
+        line = shlex.split(line)
 
         # my_dict is a dict containing all objects.
         # all returns this dictionary
@@ -136,7 +148,7 @@ class HBNBCommand(cmd.Cmd):
         Then changes are saved into the JSON file
         """
         # start with line parsing
-        line = line.split()
+        line = shlex.split(line)
 
         if len(line) == 0:
             print("** class name missing **")
@@ -165,7 +177,7 @@ class HBNBCommand(cmd.Cmd):
         Changes then saved into the JSON file.
         Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com".
         """
-        line = line.split()
+        line = shlex.split(line)
 
         if len(line) == 0:
             print("** class name missing **")
