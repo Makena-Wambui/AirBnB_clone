@@ -139,12 +139,15 @@ class HBNBCommand(cmd.Cmd):
 
         if len(line) == 0:
             print("** class name missing **")
+            return False
 
         if line[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
+            return False
 
         if len(line) == 1:
             print("** instance id missing **")
+            return False
 
         # reference to the dict that stores all objects.
         my_dict = storage.all()
@@ -187,23 +190,21 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
             return False
 
-        if len(line) == 4:
-            # Retrieve the object based on class name and id
-            o = my_dict[f"{line[0]}.{line[1]}"]
+        # Retrieve the object based on class name and id
+        o = my_dict[f"{line[0]}.{line[1]}"]
             
-            # check if that attribute name already exists
-            if line[2] in o.__dict__.keys():
-                # get value of this attribute and its type
-                value = o.__dict__[line[2]]
-                my_type = type(value)
+        # check if that attribute name already exists
+        if line[2] in o.__dict__.keys():
+            # get value of this attribute and its type
+            value = o.__dict__[line[2]]
+            my_type = type(value)
                 
-                # typecast and assign
-                o.__dict__[line[2]] = my_type(line[3])
-            else:
-                o.__dict__[line[2]] = line[3]
-                
-        storage.save()
-
+            # typecast and set
+            setattr(o, line[2], my_type(line[3]))
+            storage.save()
+        else:
+            setattr(o, line[2], line[3])
+            storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
