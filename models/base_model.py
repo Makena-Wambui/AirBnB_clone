@@ -51,6 +51,7 @@ class BaseModel():
                     self.__dict__[k] = v
         else:
             models.storage.new(self)
+
     def __str__(self):
         """
         Returns an informal string representation of an object.
