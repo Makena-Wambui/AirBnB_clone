@@ -236,7 +236,7 @@ class HBNBCommand(cmd.Cmd):
         command_dict = {
                 "create": self.do_create, "show": self.do_show,
                 "update": self.do_update, "all": self.do_all,
-                "destroy": self.do_destroy
+                "destroy": self.do_destroy, "count": self.do_count
                 }
 
         # lets call on split to split the input line,
@@ -269,6 +269,34 @@ class HBNBCommand(cmd.Cmd):
             print(f"*** Unknown syntax: {line}")
 
         return False
+
+    def do_count(self, line):
+        """
+        This method is called to retrieve the number of instances of a class.
+        Should work like this:
+            count User
+            User.count()
+        """
+
+        # recall shlex tokenizes strings according to Unix Shell syntax
+        # so this returns a list of strings.
+
+        line = shlex.split(line)
+
+        # initialize a counter to 0
+        # keeps track of the number of instances.
+
+        counter = 0
+
+        # recall storage.all contains all objects;
+        # key => Classname Id
+        # value => the object itself
+        for my_obj in storage.all().values():
+            class_name = my_obj.__class__.__name__
+            if line[0] == class_name:
+                counter = counter + 1
+
+        print(counter)
 
 
 if __name__ == '__main__':
