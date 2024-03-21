@@ -220,6 +220,56 @@ class HBNBCommand(cmd.Cmd):
             setattr(o, line[2], line[3])
             storage.save()
 
+    def default(self, line):
+        """
+        By default, default is called if no command handler exists for
+        the input entered.
+        It prints an error message:ex => *** Unknown syntax: User.all()
+        Then returns.
+        This implementation overrides this behavior of the default method.
+        """
+
+        # first we specify a dictionary that contains all commands
+        # and their respective handlers.
+        # why are the values not strings?
+        # Because they are references to methods and not literal strings.
+        command_dict = {
+                "create": self.do_create, "show": self.do_show,
+                "update": self.do_update, "all": self.do_all,
+                "destroy": self.do_destroy
+                }
+
+        # lets call on split to split the input line,
+        # with delimiter "." for ex User.all()
+        # is split to a list of strings: ["User", "all()"]
+        line_list = line.split(".")
+        class_name = line_list[0]
+
+        # now we focus on the command itself,
+        # which is at index line_list[1]
+        # we call split again to extract this command
+
+        our_command_list = line_list[1].split("(")
+
+        # the result looks like: ["all", ")"]
+
+        # now we focus on our_command_list[0];
+        # which is the command itself
+
+        # lets check if it is a valid command in our
+        # command_dict
+
+        command = our_command_list[0]
+        if command in command_dict.keys():
+            # retrieve its value, the method
+            value = command_dict[command]
+
+            return value("{} {}".format(class_name, ""))
+        else:
+            print(f"*** Unknown syntax: {line}")
+
+        return False
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
