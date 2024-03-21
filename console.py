@@ -253,8 +253,9 @@ class HBNBCommand(cmd.Cmd):
 
         # the result looks like: ["all", ")"]
 
-        # now we focus on our_command_list[0];
-        # which is the command itself
+        # Lets add logic for handling commands like User.show(<id>)
+        arguments = our_command_list[1].split(")")
+        instance_id = arguments[0]
 
         # lets check if it is a valid command in our
         # command_dict
@@ -264,7 +265,7 @@ class HBNBCommand(cmd.Cmd):
             # retrieve its value, the method
             value = command_dict[command]
 
-            return value("{} {}".format(class_name, ""))
+            return value("{} {}".format(class_name, instance_id))
         else:
             print(f"*** Unknown syntax: {line}")
 
