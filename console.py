@@ -243,29 +243,40 @@ class HBNBCommand(cmd.Cmd):
         # with delimiter "." for ex User.all()
         # is split to a list of strings: ["User", "all()"]
         line_list = line.split(".")
-        class_name = line_list[0]
+        name = line_list[0]
 
         # now we focus on the command itself,
         # which is at index line_list[1]
         # we call split again to extract this command
 
         our_command_list = line_list[1].split("(")
+        command = our_command_list[0]
 
         # the result looks like: ["all", ")"]
 
         # Lets add logic for handling commands like User.show(<id>)
-        arguments = our_command_list[1].split(")")
-        instance_id = arguments[0]
+        # and User.update("id", "name", "value")
+        args_list = our_command_list[1].split(")")[0]
+
+        # let us now separate id, attribute key, attribute value
+        args = args_list.split(',')
 
         # lets check if it is a valid command in our
         # command_dict
 
-        command = our_command_list[0]
         if command in command_dict.keys():
             # retrieve its value, the method
             value = command_dict[command]
 
-            return value("{} {}".format(class_name, instance_id))
+            # Handle logic for update
+            if command != "update":
+                return value("{} {}".format(name, args_list))
+            else:
+                instance_id = args[0]
+                k = args[1]
+                v = args[2]
+                # call update with necessary arguments
+                return value("{} {} {} {}".format(name, instance_id, k, v))
         else:
             print(f"*** Unknown syntax: {line}")
 
