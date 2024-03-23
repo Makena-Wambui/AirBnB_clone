@@ -10,7 +10,7 @@ from datetime import datetime
 import models
 
 
-class BaseModel():
+class BaseModel:
     """
     Class: BaseModel
     Defines all common attributes/methods for other classes
