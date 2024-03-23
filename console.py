@@ -11,7 +11,7 @@ for building command line interpreters.
 
 import cmd
 import shlex
-import re
+from tokenizer import tokenizer
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -178,57 +178,47 @@ class HBNBCommand(cmd.Cmd):
         Changes then saved into the JSON file.
         Ex: $ update BaseModel 1234-1234-1234 email "aibnb@mail.com".
         """
-        line = shlex.split(line)
+        # lets call tokenizer on input line
+        line_list = tokenizer(line)
 
-        if len(line) == 0:
+        if len(line_list) == 0:
             print("** class name missing **")
             return False
 
-        if line[0] not in HBNBCommand.__classes:
+        if line_list[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return False
 
-        if len(line) == 1:
+        if len(line_list) == 1:
             print("** instance id missing **")
             return False
 
         my_dict = storage.all()
 
         # Retrieve the object based on class name and id
-        o = my_dict[f"{line[0]}.{line[1]}"]
+        o = my_dict[f"{line_list[0]}.{line_list[1]}"]
 
-        if f"{line[0]}.{line[1]}" not in my_dict:
+        if f"{line_list[0]}.{line_list[1]}" not in my_dict:
             print("** no instance found **")
             return False
 
-        if len(line) == 2:
+        if len(line_list) == 2:
             print("** attribute name missing **")
             return False
 
-        if len(line) == 3:
-            attributes = line[2]
-
+        if len(line_list) == 3:
             try:
-                pattern = re.search(r"\{(?:[^{}]|(?R))*\}", attributes)
-
-                if pattern:
-                    match_str = pattern.group(0)
-                    dict_found = eval(match_str)
-
-                    for key, val in dict_found.items():
-                        if key in o.__dict__.keys():
-                            o.__dict__[key] = val
-                        else:
-                            setattr(o, key, value)
-                    storage.save()
-
+                d = eval(line_list[2])
+                type(d) is not dict
             except Exception:
                 print("** value missing **")
                 return False
 
-        if len(line) == 4:
-            attribute_name = line[2]
-            attribute_val = line[3]
+        if len(line_list) == 4:
+            # User class_name <id> Name Jake
+            attribute_name = line_list[2]
+            attribute_val = line_list[3]
+
             if attribute_name in o.__dict__.keys():
                 val_type = type(attribute_val)
                 setattr(o, attribute_name, val_type(attribute_val))
@@ -236,6 +226,12 @@ class HBNBCommand(cmd.Cmd):
             else:
                 setattr(o, attribute_name, attribute_val)
                 storage.save()
+
+        elif type(eval(line_list[2])) is dict:
+            # User class_name <id> {'Age': 10}
+            dict_arg = eval(line_list[2])
+            for key, value in dict_arg.items():
+                setattr(o, key, value)
 
     def default(self, line):
         """
