@@ -19,26 +19,31 @@ To start an interactive session
 HOW DO WE USE IT
 -----------------
 Creating objects:
+
 	create <ClassName> => returns the id of the created object
 	For example:
 	create Review
 	User.create()
 
 Displaying a particular class object using class_name and ID:
+
 	For example:
 	User.show(<id>)
 	show Amenity <id>
 
 You can also display all objects available for all classes:
+
 	For example:
 	all
 
 Or you can display all objects of a specific class:
+
 	For example:
 	all Place
 	State.all()
 
 To update a particular instance, use update.
+
 	For example:
 	update User <id> "Attribute_Name" "Attribute_ Value"
 	OR
@@ -49,6 +54,7 @@ To update a particular instance, use update.
 	Class_name.update(<id>, {"First_Name": "Alicia"}
 
 To destroy an object, call destroy:
+
 	For example:
 	destroy Review <id>
 	User.destroy(<id>)
