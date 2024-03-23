@@ -63,8 +63,9 @@ To destroy an object, call destroy:
 To get the console running in non interactive mode:
 ------------------------------------------------------
 
-root@MAKENA:~/AirBnB_clone# echo "help" | ./console.py
+$ echo "help" | ./console.py
 (hbnb)
+
 Documented commands (type help <topic>):
 ========================================
 EOF  all  count  create  destroy  help  quit  show  update
