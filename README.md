@@ -2,11 +2,11 @@ This project is the first step towards building my first full web application.
 
 Here we wre building a console or command interpreter using the Cmd class of the cmd module.
 
-This console allows use to create, display, update and destroy objects.
+This console allows users to create, display, update and destroy objects.
 
 It  also includes a file storage engine.
 We use JSON serialization and deserializtion to store our objects.
-storage is persistent that is data still remains even after you quit a session.
+Storage is persistent that is data still remains even after you quit a session.
 
 HOW DO WE START IT:
 --------------------
