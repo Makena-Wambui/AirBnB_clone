@@ -93,5 +93,5 @@ In the init file of this subpackage, we have the variable storage, an instance o
 TESTS
 -------
 The tests folder contains tests for all classes and the console.
-I used te unittest module to test my code.
+I used the unittest module to test my code.
 
