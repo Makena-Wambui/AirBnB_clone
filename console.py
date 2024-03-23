@@ -11,6 +11,7 @@ for building command line interpreters.
 
 import cmd
 import shlex
+import re
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
@@ -192,6 +193,10 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         my_dict = storage.all()
+
+        # Retrieve the object based on class name and id
+        o = my_dict[f"{line[0]}.{line[1]}"]
+
         if f"{line[0]}.{line[1]}" not in my_dict:
             print("** no instance found **")
             return False
@@ -201,24 +206,36 @@ class HBNBCommand(cmd.Cmd):
             return False
 
         if len(line) == 3:
-            print("** value missing **")
-            return False
+            attributes = line[2]
 
-        # Retrieve the object based on class name and id
-        o = my_dict[f"{line[0]}.{line[1]}"]
+            try:
+                pattern = re.search(r"\{(?:[^{}]|(?R))*\}", attributes)
 
-        # check if that attribute name already exists
-        if line[2] in o.__dict__.keys():
-            # get value of this attribute and its type
-            value = o.__dict__[line[2]]
-            my_type = type(value)
+                if pattern:
+                    match_str = pattern.group(0)
+                    dict_found = eval(match_str)
 
-            # typecast and set
-            setattr(o, line[2], my_type(line[3]))
-            storage.save()
-        else:
-            setattr(o, line[2], line[3])
-            storage.save()
+                    for key, val in dict_found.items():
+                        if key in o.__dict__.keys():
+                            o.__dict__[key] = val
+                        else:
+                            setattr(o, key, value)
+                    storage.save()
+
+            except Exception:
+                print("** value missing **")
+                return False
+
+        if len(line) == 4:
+            attribute_name = line[2]
+            attribute_val = line[3]
+            if attribute_name in o.__dict__.keys():
+                val_type = type(attribute_val)
+                setattr(o, attribute_name, val_type(attribute_val))
+                storage.save()
+            else:
+                setattr(o, attribute_name, attribute_val)
+                storage.save()
 
     def default(self, line):
         """
