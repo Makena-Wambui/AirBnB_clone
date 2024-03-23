@@ -70,6 +70,7 @@ EOF  all  count  create  destroy  help  quit  show  update
 The Models Package
 -------------------
 This package contains these classes:
+
 	1. BaseModel class in base_models => Attributes id, updated_at, created_at
 
 	2. User class in user => User information like first_name and last_name
