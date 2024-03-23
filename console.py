@@ -282,25 +282,24 @@ class HBNBCommand(cmd.Cmd):
             if command != "update":
                 return value("{} {}".format(name, args_list))
             else:
-                    my_list = tokenizer(args_list)
-                    try:
-                        if isinstance(my_list[1], str) and len(my_list) == 3:
-                            obj_id = my_list[0]
-                            key = my_list[1]
-                            val = my_list[2]
-                            return value("{} {} {} {}".format(name, obj_id, key, val))
-                        elif isinstance(my_list[1], str) and len(my_list) == 2:
-                            obj_id = my_list[0]
-                            key = my_list[1]
-                            return value("{} {} {}".format(name, obj_id, key))
-                        elif isinstance(my_list[1], dict):
-                            obj_id = my_list[0]
-                            dict_arg = my_list[1]
-                            return value("{} {} {}".format(name, obj_id, dict_arg))
-                    except Exception:
-                        print(f"*** Unknown syntax: {line}")
-        return False
-                    
+                my_list = tokenizer(args_list)
+                try:
+                    if isinstance(my_list[1], str) and len(my_list) == 3:
+                        o_id = my_list[0]
+                        key = my_list[1]
+                        v = my_list[2]
+                        return value("{} {} {} {}".format(name, o_id, key, v))
+                    elif isinstance(my_list[1], str) and len(my_list) == 2:
+                        obj_id = my_list[0]
+                        key = my_list[1]
+                        return value("{} {} {}".format(name, obj_id, key))
+                    elif isinstance(my_list[1], dict) and len(my_list) == 2:
+                        obj_id = my_list[0]
+                        dict_arg = my_list[1]
+                        return value("{} {} {}".format(name, obj_id, dict_arg))
+                except Exception:
+                    print(f"*** Unknown syntax: {line}")
+            return False
 
     def do_count(self, line):
         """
