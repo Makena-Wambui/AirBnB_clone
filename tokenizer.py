@@ -2,7 +2,6 @@
 
 """
 Lets define a function: tokenizer in this module
-in this module.
 """
 import re
 import shlex
