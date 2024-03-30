@@ -1,0 +1,11 @@
+/* Footer Selector */
+footer {
+	align-items: center;
+	background-color: #0f0;
+	bottom: 0;
+	display: flex;
+	height: 60px;
+	justify-content: centre;
+	position: absolute;
+	width: 100%;
+	}
