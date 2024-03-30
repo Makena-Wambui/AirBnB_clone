@@ -1,0 +1,35 @@
+/*
+ * Class selector .filters.
+ * Targets elements whose class attribute value is filters
+ */
+
+.filters {
+	background-color: #fff;
+	/* border 1px #DDDDDD with radius 4px */
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	height: 70px;
+	width: 100%;
+	}
+
+/* Search Button */
+.filters button {
+	background: #ff5a5f;
+	border: none;
+	border-radius: 4px;
+	color: #fff;
+	float: right;
+	font-size: 18px;
+	height: 48px;
+	margin: 12px 30px;
+	width: 20%;
+	}
+
+/* 
+ * change opacity to 90% when the
+ * mouse is on the button
+ */
+
+.filters button:hover {
+	background-color: rgba(255, 90, 95, .9);
+	}
