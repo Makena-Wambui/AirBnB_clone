@@ -5,6 +5,8 @@ For example:
 To refer to a CSS file within a HTML Document, use <link> in <head> plus rel and href attibutes.
 I used a relative url for images ie logo in the images folder.
 
+The section element is used to divide the content into logical sections or subsections
+
 The button HTML element is an interactive element that can be clicked by a user to perform an action, such as submitting a form or opening a dialog
 Example: <button type="button">Click Me!</button>
 
@@ -12,3 +14,10 @@ There are two main types of HTML lists: unordered lists (<ul>) and ordered lists
 
 The <li> tag defines a list item.
 The <li> tag is used inside ordered lists(<ol>), unordered lists (<ul>), and in menu lists (<menu>).
+
+The flex property is a shorthand property for:
+flex-grow
+flex-shrink
+flex-basis
+The flex property sets the flexible length on flexible items.
+If the element is not a flexible item, the flex property has no effect.
