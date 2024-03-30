@@ -18,9 +18,6 @@ Unordered lists display the items with bullets, while ordered lists display the 
 The li tag defines a list item.
 The li tag is used inside ordered lists(ol), unordered lists (ul), and in menu lists (menu).
 
-The CSS flex property is a shorthand property for:
--> flex-grow
--> flex-shrink
--> flex-basis
+The CSS flex property is a shorthand property for:flex-grow, flex-shrink or flex-basis.
 The flex property sets the flexible length on flexible items.
 If the element is not a flexible item, the flex property has no effect.
