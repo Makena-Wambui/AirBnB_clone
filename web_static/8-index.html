@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>AirBnB Clone</title>
+		<!-- Link element in head, plus rel and href attributes-->
+		<link rel="stylesheet" href="styles/4-common.css">
+		<link rel="stylesheet" href="styles/3-footer.css">
+		<link rel="stylesheet" href="styles/3-header.css">
+		<link rel="stylesheet" href="styles/6-filters.css">
+		<link rel="stylesheet" href="styles/8-places.css">
+
+		<!-- Include hyperlink ref to font awesome-->
+		<!-- FA is a powerful tool for enhancing your web design with visually appealing icons-->
+		<!-- integrity attribute to ensure our external resource, FA does not contain malicious content.-->
+		<link rel="stylesheet" 
+		      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+		      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+		      crossorigin="anonymous">
+		<link rel="icon" href="images/icon.png">
+
+	</head>
+	<body>
+		<header></header>
+		<div class="container">
+			<!-- Section element used to divide content into sections -->
+			<section class="filters">
+				<div class="locations">
+					<h3>States</h3>
+					<h4>ie. California/Arizona/Ohio...</h4>
+					<div class="popover">
+						<h2>California:</h2>
+						<!-- Use the unordered lists element, ul -->
+						<ul>
+							<!-- li; the lists tag -->
+							<li>Malibu</li>
+							<li>San Francisco</li>
+							<li>Beverly Hills</li>
+						</ul>
+						<h2>Arizona:</h2>
+						<ul>
+							<li>Page</li>
+							<li>Tempe</li>
+							<li>Phoenix</li>
+						</ul>
+					</div>
+				</div>
+				<div class="amenities">
+					<h3>Amenities</h3>
+					<h4>ie. Internet/Kitchen/TV...</h4>
+					<ul class="popover">
+						<li>Internet</li>
+						<li>TV</li>
+						<li>Kitchen</li>
+						<li>Iron</li>
+					</ul>
+				</div>
+				<button>Search</button>
+			</section>
+			<section class="places">
+				<h1>Places</h1>
+				<!-- article: independent, self-contained content -->
+				<article>
+					<div class="name_and_price">
+						<h2>My home</h2>
+						<div class="price_by_night">
+							$80
+						</div>
+					</div>
+
+					<div class="information">
+						<div class="max_guest">
+							<!-- Use fa for icons on our web page-->
+							<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+							<!-- use br to produce a line break. -->
+							<br>2 Guests
+						</div>
+						<div class="number_rooms">
+							<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+							<br>1 BedRoom
+						</div>
+						<div class="number_bathrooms">
+							<i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+							<br>1 Bathroom
+						</div>
+					</div>
+
+					<div class="user">
+						<!-- Use strong tag to make Owner bold and stand out -->
+						<strong>Owner:</strong> Bob's Burgers
+					</div>
+
+					<div class="description">
+						Come stay at our private, quiet, and simple home located in the heart of downtown.
+						This spacious duplex is perfect for single people or a small family,
+						looking for a peaceful stay.
+						Book your stay with us and enjoy a comfortable retreat!
+					</div>
+				</article>
+
+				<article>
+					<div class="name_and_price">
+						<h2>Tiny house</h2>
+						<div class="price_by_night">
+							$65
+						</div>
+					</div>
+
+					<div class="information">
+						<div class="max_guest">
+							<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+							<br>4 Guests
+						</div>
+						<div class="number_rooms">
+							<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+							<br>2 BedRooms
+						</div>
+
+						<div class="number_bathrooms">
+							<i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+							<br>1 Bathroom
+						</div>
+					</div>
+
+					<div class="user">
+						<strong>Owner:</strong> Adrienne Parker
+					</div>
+
+					<div class="description">
+						Private, affordable, standalone guest house on the outskirts
+						of Tempe, Florida, just a ten minute ride from the Casa art gallery.
+						It has a mini kitchen, a full bath and a living room.
+						The sofa converts to a bed too. And if you like pets, then you will
+						have my dog William and my cat Banksy to show you around.
+					</div>
+				</article>
+
+
+				<article>
+					<div class="name_and_price">
+						<h2>A suite</h2>
+						<div class="price_by_night">
+							$150
+						</div>
+					</div>
+
+					<div class="information">
+						<div class="max_guest">
+							<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+							<br>2 Guests
+						</div>
+
+						<div class="number_rooms">
+							<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+							<br>1 BedRoom
+						</div>
+
+						<div class="number_bathrooms">
+							<i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+							<br>1 Bathroom
+						</div>
+					</div>
+
+					<div class="user">
+						<strong>Owner:</strong> Mr. Meseeks
+					</div>
+
+					<div class="description">
+						If interested in all things Nature, come stay with us. We have an unreal waterfall plus river
+						a ten minute walk from here. You can also go fishing on my boat if you would like to.
+						A cozy 1 Bathroom, 1 room suite with a fireplace, a fire pit and a porch where you can watch the sunset!
+					</div>
+				</article>
+
+			</section>
+		</div>
+		<footer>
+			Best School
+		</footer>
+	</body>
+</html>
