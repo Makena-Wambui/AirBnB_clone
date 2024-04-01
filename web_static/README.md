@@ -68,3 +68,38 @@ Add animation to icons using the fa-spin class:
 	<i class="fa fa-circle-o-notch fa-spin"></i>
 	<i class="fa fa-refresh fa-spin"></i>
 
+Responsive Web Design
+---------------------------
+It is the way to design for a multi-device web.
+It is a term used to describe a set of best practices used to create a layout that can respond to any device being used to view the content.
+
+The content property is used with the ::before and ::after pseudo-elements, to insert generated content
+:before creates an invisible element that can be styled independently.
+: after does the opposite
+
+content: "";:
+This property sets the content for the pseudo-elements (:before and :after).
+In this case, it assigns an empty string as the content.
+Since the content is empty, the pseudo-elements won’t display anything visually on the page.
+
+display: table;:
+The display property controls how an element is rendered.
+By setting it to table, the pseudo-elements behave like table elements.
+Specifically, they participate in the table layout model, which means they can affect the layout of other elements around them.
+
+
+
+The float CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it
+The float property is used for positioning and formatting content, such as images or navigation menus
+
+A media query allows you to apply specific styles based on the characteristics of the user’s device (such as screen size, resolution, or orientation).
+
+
+The viewport meta tag is a piece of code that tells the browser how to display a website’s content on a device’s screen.
+It ensures that the website looks good and is easy to use on all devices, regardless of their size or orientation.
+
+Different devices have varying screen sizes and resolutions. The viewport meta tag helps optimize the website’s layout for each device.
+Without this tag, some devices might render pages in a virtual viewport wider than the actual screen, leading to suboptimal user experiences.
+
+The viewport meta tag is crucial for responsive web design.
+Combined with CSS media queries, it allows developers to create layouts that adapt seamlessly to different screen sizes and orientations.
