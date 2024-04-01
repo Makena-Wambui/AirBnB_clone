@@ -1,0 +1,25 @@
+/* Responsive web design approach */
+
+/* BOdy */
+body {
+	color: #484848;
+	font: 14px Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+
+/* no horizontal scrolling */
+html, body {
+	width: 100%;
+	overflow-x: hidden;
+	}
+  
+/* Container */
+.container {
+	margin: 30px auto;
+	max-width: 1000px;
+	}
+
+/* For strong */
+strong {
+	font-weight: bold;
+	}
